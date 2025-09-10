@@ -10,4 +10,9 @@ class StringCalculatorTest < ActiveSupport::TestCase
     calculator = StringCalculator.new
     assert_equal 1, calculator.add("1")
   end
+
+  def test_add_two_numbers_returns_sum
+    calculator = StringCalculator.new
+    assert_equal 6, calculator.add("1,5")
+  end
 end
