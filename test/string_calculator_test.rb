@@ -51,4 +51,9 @@ class StringCalculatorTest < ActiveSupport::TestCase
     calculator = StringCalculator.new
     assert_equal 2, calculator.add("2,1001")
   end
+
+  def test_add_with_long_delimiter_returns_sum
+    calculator = StringCalculator.new
+    assert_equal 6, calculator.add("//[***]\n1***2***3")
+  end
 end

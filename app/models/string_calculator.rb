@@ -4,8 +4,14 @@ class StringCalculator
 
     if numbers.start_with?("//")
       # Split once at first newline: delimiter goes left, rest of string goes right
-      delimiter, numbers_part = numbers.split("\n", 2)
-      delimiter = delimiter[2..-1] # Remove "//"
+      delimiter_part, numbers_part = numbers.split("\n", 2)
+      delimiter = delimiter_part[2..-1] # Remove "//"
+
+      # Handle [delimiter] format for delimiters of any length
+      if delimiter.start_with?("[") && delimiter.end_with?("]")
+        delimiter = delimiter[1..-2] # Remove brackets
+      end
+
       numbers_array = numbers_part.split(delimiter).map(&:to_i)
     else
       numbers_array = numbers.split(/[,\n]/).map(&:to_i)
