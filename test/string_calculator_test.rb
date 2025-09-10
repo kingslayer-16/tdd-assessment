@@ -46,4 +46,9 @@ class StringCalculatorTest < ActiveSupport::TestCase
     end
     assert_equal "negative numbers not allowed -2, -4", exception.message
   end
+
+  def test_add_ignores_numbers_bigger_than_1000
+    calculator = StringCalculator.new
+    assert_equal 2, calculator.add("2,1001")
+  end
 end
