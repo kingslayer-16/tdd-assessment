@@ -30,4 +30,20 @@ class StringCalculatorTest < ActiveSupport::TestCase
     calculator = StringCalculator.new
     assert_equal 3, calculator.add("//;\n1;2")
   end
+
+  def test_add_with_negative_number_throws_exception
+    calculator = StringCalculator.new
+    exception = assert_raises(RuntimeError) do
+      calculator.add("1,-2")
+    end
+    assert_equal "negative numbers not allowed -2", exception.message
+  end
+
+  def test_add_with_multiple_negative_numbers_throws_exception
+    calculator = StringCalculator.new
+    exception = assert_raises(RuntimeError) do
+      calculator.add("1,-2,3,-4")
+    end
+    assert_equal "negative numbers not allowed -2, -4", exception.message
+  end
 end
