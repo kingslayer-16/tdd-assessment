@@ -25,4 +25,9 @@ class StringCalculatorTest < ActiveSupport::TestCase
     calculator = StringCalculator.new
     assert_equal 6, calculator.add("1\n2,3")
   end
+
+  def test_add_with_custom_delimiter_returns_sum
+    calculator = StringCalculator.new
+    assert_equal 3, calculator.add("//;\n1;2")
+  end
 end
