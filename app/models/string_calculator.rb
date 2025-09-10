@@ -18,7 +18,7 @@ class StringCalculator
         end
 
         # Split by each delimiter one by one
-        numbers_array = [numbers_part]
+        numbers_array = [ numbers_part ]
         delimiters.each do |delim|
           numbers_array = numbers_array.flat_map { |part| part.split(delim) }
         end
